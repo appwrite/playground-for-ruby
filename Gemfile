@@ -5,5 +5,5 @@ source "https://rubygems.org"
 gem "rubocop"
 
 gem "appwrite"
-gem "mime-types"
 gem "dotenv"
+gem "mime-types"
