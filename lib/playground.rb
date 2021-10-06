@@ -51,6 +51,16 @@ def add_doc
   puts response
 end
 
+def list_docs
+  database = Appwrite::Database.new($client)
+  puts("Running List Document API")
+
+  response = database.list_documents(collection_id: $collection_id)
+
+  puts response
+end
+
 create_collection
 list_collection
 add_doc
+list_docs
