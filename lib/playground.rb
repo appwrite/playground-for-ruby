@@ -29,4 +29,14 @@ def create_collection
   puts response
 end
 
+def list_collection
+  database = Appwrite::Database.new($client)
+  puts("Running List Collection API")
+
+  response = database.list_collections
+
+  puts response
+end
+
 create_collection
+list_collection
