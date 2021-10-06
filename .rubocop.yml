@@ -14,3 +14,4 @@ Layout/LineLength:
 GlobalVars:
   AllowedVariables:
     - $client
+    - $collection_id
