@@ -69,8 +69,18 @@ def upload_file
   puts(response)
 end
 
+def create_user(email, password, name)
+  users = Appwrite::Users.new($client)
+  puts("Running Create User API")
+
+  response = users.create(email: email, password: password, name: name)
+
+  puts response
+end
+
 create_collection
 list_collection
 add_doc
 list_docs
 upload_file
+create_user(Time.now.to_i.to_s + "@example.com", "password", "Some User")
