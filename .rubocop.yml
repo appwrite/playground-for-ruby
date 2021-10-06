@@ -10,3 +10,7 @@ Style/StringLiteralsInInterpolation:
 
 Layout/LineLength:
   Max: 120
+
+GlobalVars:
+  AllowedVariables:
+    - $client
