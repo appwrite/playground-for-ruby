@@ -78,9 +78,19 @@ def create_user(email, password, name)
   puts response
 end
 
+def list_user
+  users = Appwrite::Users.new($client)
+  puts("Running List User API")
+
+  response = users.list
+
+  puts response
+end
+
 create_collection
 list_collection
 add_doc
 list_docs
 upload_file
 create_user(Time.now.to_i.to_s + "@example.com", "password", "Some User")
+list_user
