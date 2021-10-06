@@ -3,6 +3,7 @@ GEM
   specs:
     appwrite (2.4.0)
     ast (2.4.2)
+    colorize (0.8.1)
     dotenv (2.7.6)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
@@ -32,6 +33,7 @@ PLATFORMS
 
 DEPENDENCIES
   appwrite
+  colorize
   dotenv
   mime-types
   rubocop
