@@ -60,7 +60,17 @@ def list_docs
   puts response
 end
 
+def upload_file
+  storage = Appwrite::Storage.new($client)
+  puts("Running Upload File API")
+
+  response = storage.create_file(file: Appwrite::File.new("nature.jpg"))
+
+  puts(response)
+end
+
 create_collection
 list_collection
 add_doc
 list_docs
+upload_file
