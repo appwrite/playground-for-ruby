@@ -21,7 +21,7 @@ def create_collection
   puts "Running Create Collection API".green
 
   response = database.create_collection(
-    name: "Movies", read: [], write: [], rules: [
+    name: "Movies", read: ["*"], write: ["*"], rules: [
       { label: "Name", key: "name", type: "text", default: "Empty Name", required: true, array: false },
       { label: "release_year", key: "release_year", type: "numeric", default: 1970, required: true, array: false }
     ]
