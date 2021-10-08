@@ -22,7 +22,7 @@ This playground doesn't include all of Ruby best practices but rather intended t
 3. Copy the `.env.example` file as `.env` in the root of the repository. (You can run `cp .env.example .env`)
 4. Copy the Project ID, Endpoint, API key from your Appwrite Console.
 4. Update APPWRITE_PROJECT_ID, APPWRITE_ENDPOINT, APPWRITE_API_KEY using the copied values from the console in the `.env` file as appropriate. 
-5. Install dependencies using bundel (`bundle install`)
+5. Install dependencies using bundle (`bundle install`)
 5. Execute the command `ruby lib/playground.rb`
 6. You will see the JSON response in the console.
 
