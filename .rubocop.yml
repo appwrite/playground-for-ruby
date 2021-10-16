@@ -1,0 +1,17 @@
+AllCops:
+  TargetRubyVersion: 2.4
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Layout/LineLength:
+  Max: 120
+
+GlobalVars:
+  AllowedVariables:
+    - $client
+    - $collection_id
