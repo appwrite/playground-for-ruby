@@ -6,7 +6,8 @@ group :development, :test do
     gem "rubocop"
 end
 
-gem "appwrite"
+gem "appwrite", "~> 3.0.0"
 gem "colorize"
 gem "dotenv"
 gem "mime-types"
+gem "mime-types-data"

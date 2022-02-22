@@ -1,42 +1,45 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    appwrite (2.4.0)
+    appwrite (3.0.0)
+      mime-types (~> 3.3.1)
     ast (2.4.2)
     colorize (0.8.1)
     dotenv (2.7.6)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0901)
+    mime-types-data (3.2022.0105)
     parallel (1.21.0)
-    parser (3.0.2.0)
+    parser (3.1.0.0)
       ast (~> 2.4.1)
-    rainbow (3.0.0)
-    regexp_parser (2.1.1)
+    rainbow (3.1.1)
+    regexp_parser (2.2.1)
     rexml (3.2.5)
-    rubocop (0.93.1)
+    rubocop (1.25.1)
       parallel (~> 1.10)
-      parser (>= 2.7.1.5)
+      parser (>= 3.1.0.0)
       rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 1.8)
+      regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 0.6.0)
+      rubocop-ast (>= 1.15.1, < 2.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (1.12.0)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.15.2)
       parser (>= 3.0.1.1)
     ruby-progressbar (1.11.0)
-    unicode-display_width (1.8.0)
+    unicode-display_width (2.1.0)
 
 PLATFORMS
-  x86_64-linux
+  aarch64-linux
+  arm64-darwin-21
 
 DEPENDENCIES
-  appwrite
+  appwrite (~> 3.0.0)
   colorize
   dotenv
   mime-types
+  mime-types-data
   rubocop
 
 BUNDLED WITH
-   2.2.4
+   2.3.3
