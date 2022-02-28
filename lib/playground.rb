@@ -166,11 +166,26 @@ def delete_document
   puts JSON.pretty_generate(response)
 end
 
+def create_bucket
+  storage = Appwrite::Storage.new($client)
+  puts "Running Create Bucket API".green
+
+  response = storage.create_bucket(
+    bucket_id: "unique()",
+    name: "awesome-bucket",
+    permission: "file"
+  )
+
+  $bucket_id = response.id
+  puts JSON.pretty_generate(response.to_map)
+end
+
 def upload_file
   storage = Appwrite::Storage.new($client)
   puts "Running Upload File API".green
 
   response = storage.create_file(
+    bucket_id: $bucket_id,
     file_id: "unique()",
     file: Appwrite::File.new("nature.jpg")
   )
@@ -184,7 +199,7 @@ def list_files
   storage = Appwrite::Storage.new($client)
   puts "Running List Files API".green
 
-  response = storage.list_files
+  response = storage.list_files(bucket_id: $bucket_id)
 
   puts JSON.pretty_generate(response.to_map)
 end
@@ -193,7 +208,16 @@ def delete_file
   storage = Appwrite::Storage.new($client)
   puts "Running Delete File API".green
 
-  response = storage.delete_file(file_id: $file_id)
+  response = storage.delete_file(bucket_id: $bucket_id, file_id: $file_id)
+
+  puts JSON.pretty_generate(response)
+end
+
+def delete_bucket
+  storage = Appwrite::Storage.new($client)
+  puts "Running Delete Bucket API".green
+
+  response = storage.delete_bucket(bucket_id: $bucket_id)
 
   puts JSON.pretty_generate(response)
 end
@@ -211,8 +235,10 @@ delete_document
 
 delete_collection
 
+create_bucket
 upload_file
 list_files
 delete_file
+delete_bucket
 
 puts "Successfully Ran playground!".bold.green
