@@ -1,16 +1,22 @@
+GIT
+  remote: https://github.com/appwrite/sdk-for-ruby.git
+  revision: 7ef797f9a1b0aea119bb2d7394d0c0069686bbd1
+  branch: dev
+  specs:
+    appwrite (3.0.0)
+      mime-types (~> 3.4.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    appwrite (3.0.0)
-      mime-types (~> 3.3.1)
     ast (2.4.2)
     colorize (0.8.1)
     dotenv (2.7.6)
-    mime-types (3.3.1)
+    mime-types (3.4.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
     parallel (1.21.0)
-    parser (3.1.0.0)
+    parser (3.1.1.0)
       ast (~> 2.4.1)
     rainbow (3.1.1)
     regexp_parser (2.2.1)
@@ -24,17 +30,16 @@ GEM
       rubocop-ast (>= 1.15.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.15.2)
-      parser (>= 3.0.1.1)
+    rubocop-ast (1.16.0)
+      parser (>= 3.1.1.0)
     ruby-progressbar (1.11.0)
     unicode-display_width (2.1.0)
 
 PLATFORMS
-  aarch64-linux
   arm64-darwin-21
 
 DEPENDENCIES
-  appwrite (~> 3.0.0)
+  appwrite!
   colorize
   dotenv
   mime-types
@@ -42,4 +47,4 @@ DEPENDENCIES
   rubocop
 
 BUNDLED WITH
-   2.3.3
+   2.3.7

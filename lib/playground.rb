@@ -96,13 +96,19 @@ def create_collection
     required: true,
     array: false
   )
-  # responses << database.create_index(
-  #   collection_id: $collectionId,
-  #   key: "name_kids_idx",
-  #   type: "fulltext",
-  #   attributes: ["name", "kids"]
-  # )
-
+  responses << database.create_email_attribute(
+    collection_id: $collection_id,
+    key: 'email',
+    required: false,
+    default: ''
+  )
+  sleep(3)
+  responses << database.create_index(
+    collection_id: $collection_id,
+    key: "name_kids_idx",
+    type: "fulltext",
+    attributes: ["name", "email"]
+  )
   responses.each do |response|
     puts JSON.pretty_generate(response.to_map)
   end
@@ -187,7 +193,7 @@ def upload_file
   response = storage.create_file(
     bucket_id: $bucket_id,
     file_id: "unique()",
-    file: Appwrite::File.new("nature.jpg")
+    file: Appwrite::File.new("nature.jpg", nil)
   )
 
   $file_id = response.id
