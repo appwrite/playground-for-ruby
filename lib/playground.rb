@@ -187,6 +187,15 @@ def create_bucket
   puts JSON.pretty_generate(bucket.to_map)
 end
 
+def list_buckets
+  storage = Appwrite::Storage.new($client)
+  puts "Running List Buckets API".green
+
+  buckets = storage.list_buckets
+  
+  puts JSON.pretty_generate(buckets.to_map)
+end
+
 def upload_file
   storage = Appwrite::Storage.new($client)
   puts "Running Upload File API".green
@@ -281,6 +290,7 @@ delete_collection
 
 # Storage
 create_bucket
+list_buckets
 upload_file
 list_files
 delete_file

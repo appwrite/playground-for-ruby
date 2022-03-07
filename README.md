@@ -33,7 +33,7 @@ This playground does not adhere to Ruby best practices but rather is intended to
 
 - Databse
     * Create Collection
-    * List Collection
+    * List Collections
     * Add Document
     * List Documents
     * Delete Document
@@ -41,13 +41,15 @@ This playground does not adhere to Ruby best practices but rather is intended to
 
 - Storage
     * Create Bucket
+    * List Buckets
     * Upload File
     * List Files
     * Delete File
+    * Delete Bucket
 
 - Users
     * Create User
-    * List User
+    * List Users
     * Delete User
 
 - Functions
