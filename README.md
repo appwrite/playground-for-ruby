@@ -31,7 +31,7 @@ This playground does not adhere to Ruby best practices but rather is intended to
 ### APIs Covered in Playground:
 
 - Databse
-    * [Create Collection](./lib/playground.rb#L47)
+    * [Create Collection](./lib/playground.rb#L53)
     * [List Collection](./lib/playground.rb#L111)
     * [Add Document](./lib/playground.rb#L129)
     * [List Documents](./lib/playground.rb#L148)
