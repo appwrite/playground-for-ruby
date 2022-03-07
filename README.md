@@ -10,19 +10,20 @@ Appwrite playground is a simple way to explore the Appwrite API & Appwrite Ruby 
 
 This playground does not adhere to Ruby best practices but rather is intended to show some of the most simple examples and use cases of using the Appwrite API in your Ruby application. Rubocop is enforced and the configuration can be found at [.rubocop.yml](.rubocop.yml)
 
-## Requirements 
-* A system with Ruby 2.7+ or Docker installed.
-* An Appwrite instance (localhost in most cases).
+## System Requirements
+* A system with Python 3+ or Docker installed.
+* An Appwrite instance.
 * An Appwrite project created in the console.
-* An Appwrite API Key created in the console.
+* An Appwrite API key created in the console.
 
 ### Installation
 1. Clone this repository.
-2. `cd` into the repository.
-4. Open [playground.rb](./lib/playground.rb) and update YOUR_PROJECT_ID, YOUR_ENDPOINT, and YOUR_API_KEY using the copied values from the console.
+2. `cd` into to the repository.
+3. Open the playground.py file found in the root of the cloned repository.
+4. Copy Project ID, endpoint and API key from Appwrite console into `lib/playground.rb`
 5. Run the playground:
     Ruby:
-        - Install dependencies using bundle (`bundle install`)
+        - Install dependencies using pip `bundle install`
         - Execute the command `bundle exec ruby lib/playground.rb`
     Docker:
         - Execute the command `docker compose up`
@@ -31,28 +32,28 @@ This playground does not adhere to Ruby best practices but rather is intended to
 ### API's Covered:
 
 - Databse
-    * [Create Collection](./lib/playground.rb#L53)
-    * [List Collection](./lib/playground.rb#L111)
-    * [Add Document](./lib/playground.rb#L129)
-    * [List Documents](./lib/playground.rb#L148)
-    * [Delete Document](./lib/playground.rb#L157)
-    * [Delete Collection](./lib/playground.rb#L120)
+    * Create Collection
+    * List Collection
+    * Add Document
+    * List Documents
+    * Delete Document
+    * Delete Collection
 
 - Storage
-    * [Create Bucket](./lib/playground.rb#L169)
-    * [Upload File](./lib/playground.rb#L183)
-    * [List Files](./lib/playground.rb#L198)
-    * [Delete File](./lib/playground.rb#L207)
+    * Create Bucket
+    * Upload File
+    * List Files
+    * Delete File
 
 - Users
-    * [Create User](./lib/playground.rb#L13)
-    * [List User](./lib/playground.rb#L29)
-    * [Delete User](./lib/playground.rb#L38)
+    * Create User
+    * List User
+    * Delete User
 
 - Functions
-    * [Create Function](./lib/playground.rb#L229)
-    * [List Functions](./lib/playground.rb#L244)
-    * [Delete Function](./lib/playground.rb#L253)
+    * Create Function
+    * List Functions
+    * Delete Function
 
 ## Contributing
 
