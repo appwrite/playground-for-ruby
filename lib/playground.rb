@@ -193,7 +193,7 @@ def upload_file
   response = storage.create_file(
     bucket_id: $bucket_id,
     file_id: "unique()",
-    file: Appwrite::File.new("nature.jpg", nil)
+    file: Appwrite::File.new("./resources/nature.jpg", nil)
   )
 
   $file_id = response.id
@@ -214,7 +214,10 @@ def delete_file
   storage = Appwrite::Storage.new($client)
   puts "Running Delete File API".green
 
-  response = storage.delete_file(bucket_id: $bucket_id, file_id: $file_id)
+  response = storage.delete_file(
+    bucket_id: $bucket_id, 
+    file_id: $file_id
+  )
 
   puts JSON.pretty_generate(response)
 end
@@ -234,11 +237,9 @@ delete_user
 
 create_collection
 list_collections
-
 create_document
 list_documents
 delete_document
-
 delete_collection
 
 create_bucket
