@@ -29,7 +29,7 @@ def create_user
 
   $user_id = response.id
 
-  puts JSON.pretty_generate(response.to_map)
+  puts JSON.pretty_generate(response)
 end
   
 def list_users
@@ -38,7 +38,7 @@ def list_users
 
   response = users.list
 
-  puts JSON.pretty_generate(response.to_map)
+  puts JSON.pretty_generate(response)
 end
 
 def delete_user
@@ -110,7 +110,7 @@ def create_collection
     attributes: ["name", "email"]
   )
   responses.each do |response|
-    puts JSON.pretty_generate(response.to_map)
+    puts JSON.pretty_generate(response)
   end
 end
 
@@ -120,7 +120,7 @@ def list_collections
 
   response = database.list_collections
 
-  puts JSON.pretty_generate(response.to_map)
+  puts JSON.pretty_generate(response)
 end
 
 def delete_collection
@@ -183,7 +183,7 @@ def create_bucket
   )
 
   $bucket_id = response.id
-  puts JSON.pretty_generate(response.to_map)
+  puts JSON.pretty_generate(response)
 end
 
 def upload_file
@@ -198,7 +198,7 @@ def upload_file
 
   $file_id = response.id
 
-  puts JSON.pretty_generate(response.to_map)
+  puts JSON.pretty_generate(response)
 end
 
 def list_files
@@ -207,7 +207,7 @@ def list_files
 
   response = storage.list_files(bucket_id: $bucket_id)
 
-  puts JSON.pretty_generate(response.to_map)
+  puts JSON.pretty_generate(response)
 end
 
 def delete_file
@@ -231,10 +231,46 @@ def delete_bucket
   puts JSON.pretty_generate(response)
 end
 
+def create_function
+  functions = Appwrite::Functions.new($client)
+  puts "Running Create Function API".green
+
+  response = functions.create(
+    function_id: "unique()",
+    name: "Test Function",
+    runtime: "python-3.9",
+    execute: ["role:all"]
+  )
+
+  $function_id = response.id
+
+  puts JSON.pretty_generate(response)
+end
+
+def list_functions
+  functions = Appwrite::Functions.new($client)
+  puts "Running List Functions API".green
+
+  response = functions.list
+
+  puts JSON.pretty_generate(response)
+end
+
+def delete_function
+  functions = Appwrite::Functions.new($client)
+  puts "Running Delete Function API".green
+
+  response = functions.delete(function_id: $function_id)
+
+  puts JSON.pretty_generate(response)
+end
+
+# Users
 create_user
 list_users
 delete_user
 
+# Database
 create_collection
 list_collections
 create_document
@@ -242,10 +278,16 @@ list_documents
 delete_document
 delete_collection
 
+# Storage
 create_bucket
 upload_file
 list_files
 delete_file
 delete_bucket
+
+# Functions
+create_function
+list_functions
+delete_function
 
 puts "Successfully Ran playground!".bold.green

@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  playground:
+  playground-for-ruby:
     build: .
     volumes:
       - "./:/app"

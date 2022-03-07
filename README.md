@@ -28,7 +28,7 @@ This playground does not adhere to Ruby best practices but rather is intended to
         - Execute the command `docker compose up`
 6. You will see the JSON response in the console.
 
-### APIs Covered in Playground:
+### API's Covered:
 
 - Databse
     * [Create Collection](./lib/playground.rb#L53)
@@ -48,6 +48,11 @@ This playground does not adhere to Ruby best practices but rather is intended to
     * [Create User](./lib/playground.rb#L13)
     * [List User](./lib/playground.rb#L29)
     * [Delete User](./lib/playground.rb#L38)
+
+- Functions
+    * [Create Function](./lib/playground.rb#L229)
+    * [List Functions](./lib/playground.rb#L244)
+    * [Delete Function](./lib/playground.rb#L253)
 
 ## Contributing
 
