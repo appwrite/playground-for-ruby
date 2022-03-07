@@ -1,14 +1,8 @@
-GIT
-  remote: https://github.com/appwrite/sdk-for-ruby.git
-  revision: 7ef797f9a1b0aea119bb2d7394d0c0069686bbd1
-  branch: dev
-  specs:
-    appwrite (3.0.0)
-      mime-types (~> 3.4.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
+    appwrite (4.0.0)
+      mime-types (~> 3.4.1)
     ast (2.4.2)
     colorize (0.8.1)
     dotenv (2.7.6)
@@ -36,10 +30,11 @@ GEM
     unicode-display_width (2.1.0)
 
 PLATFORMS
+  aarch64-linux-musl
   arm64-darwin-21
 
 DEPENDENCIES
-  appwrite!
+  appwrite (~> 4.0.0)
   colorize
   dotenv
   mime-types
