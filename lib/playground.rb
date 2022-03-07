@@ -20,25 +20,25 @@ def create_user
   users = Appwrite::Users.new($client)
   puts "Running Create User API".green
 
-  response = users.create(
+  user = users.create(
     user_id: "unique()",
     email: "email@example.com",
     password: "password",
     name: "Some User"
   )
 
-  $user_id = response.id
+  $user_id = user.id
 
-  puts JSON.pretty_generate(response)
+  puts JSON.pretty_generate(user.to_map)
 end
   
 def list_users
   users = Appwrite::Users.new($client)
   puts "Running List User API".green
 
-  response = users.list
+  users = users.list
 
-  puts JSON.pretty_generate(response)
+  puts JSON.pretty_generate(users.to_map)
 end
 
 def delete_user
@@ -109,8 +109,9 @@ def create_collection
     type: "fulltext",
     attributes: ["name", "email"]
   )
+
   responses.each do |response|
-    puts JSON.pretty_generate(response)
+    puts JSON.pretty_generate(response.to_map)
   end
 end
 
@@ -118,9 +119,9 @@ def list_collections
   database = Appwrite::Database.new($client)
   puts "Running List Collection API".green
 
-  response = database.list_collections
+  collections = database.list_collections
 
-  puts JSON.pretty_generate(response)
+  puts JSON.pretty_generate(collections.to_map)
 end
 
 def delete_collection
@@ -136,7 +137,7 @@ def create_document
   database = Appwrite::Database.new($client)
   puts "Running Create Document API".green
 
-  response = database.create_document(
+  document = database.create_document(
     collection_id: $collection_id,
     document_id: "unique()",
     data: {
@@ -146,18 +147,18 @@ def create_document
       kids: false
     }
   )
-  $document_id = response.id
+  $document_id = document.id
 
-  puts JSON.pretty_generate(response.to_map)
+  puts JSON.pretty_generate(document.to_map)
 end
 
 def list_documents
   database = Appwrite::Database.new($client)
   puts "Running List Document API".green
 
-  response = database.list_documents(collection_id: $collection_id)
+  documents = database.list_documents(collection_id: $collection_id)
 
-  puts JSON.pretty_generate(response.to_map)
+  puts JSON.pretty_generate(documents.to_map)
 end
 
 def delete_document
@@ -176,38 +177,38 @@ def create_bucket
   storage = Appwrite::Storage.new($client)
   puts "Running Create Bucket API".green
 
-  response = storage.create_bucket(
+  bucket = storage.create_bucket(
     bucket_id: "unique()",
     name: "awesome-bucket",
     permission: "file"
   )
 
-  $bucket_id = response.id
-  puts JSON.pretty_generate(response)
+  $bucket_id = bucket.id
+  puts JSON.pretty_generate(bucket.to_map)
 end
 
 def upload_file
   storage = Appwrite::Storage.new($client)
   puts "Running Upload File API".green
 
-  response = storage.create_file(
+  file = storage.create_file(
     bucket_id: $bucket_id,
     file_id: "unique()",
-    file: Appwrite::File.new("./resources/nature.jpg", nil)
+    file: "./resources/nature.jpg"
   )
 
-  $file_id = response.id
+  $file_id = file.id
 
-  puts JSON.pretty_generate(response)
+  puts JSON.pretty_generate(file.to_map)
 end
 
 def list_files
   storage = Appwrite::Storage.new($client)
   puts "Running List Files API".green
 
-  response = storage.list_files(bucket_id: $bucket_id)
+  files = storage.list_files(bucket_id: $bucket_id)
 
-  puts JSON.pretty_generate(response)
+  puts JSON.pretty_generate(files.to_map)
 end
 
 def delete_file
@@ -235,25 +236,25 @@ def create_function
   functions = Appwrite::Functions.new($client)
   puts "Running Create Function API".green
 
-  response = functions.create(
+  function = functions.create(
     function_id: "unique()",
     name: "Test Function",
     runtime: "python-3.9",
     execute: ["role:all"]
   )
 
-  $function_id = response.id
+  $function_id = function.id
 
-  puts JSON.pretty_generate(response)
+  puts JSON.pretty_generate(function.to_map)
 end
 
 def list_functions
   functions = Appwrite::Functions.new($client)
   puts "Running List Functions API".green
 
-  response = functions.list
+  functions = functions.list
 
-  puts JSON.pretty_generate(response)
+  puts JSON.pretty_generate(functions.to_map)
 end
 
 def delete_function
