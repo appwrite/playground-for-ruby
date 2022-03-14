@@ -8,32 +8,54 @@ Appwrite playground is a simple way to explore the Appwrite API & Appwrite Ruby 
 
 ## Get Started
 
-This playground doesn't include all of Ruby best practices but rather intended to show some of the most simple examples and use cases of using the Appwrite API in your Ruby application. Rubocop is enforced and the configuration can be found at [.rubocop.yml](.rubocop.yml)
+This playground does not adhere to Ruby best practices but rather is intended to show some of the most simple examples and use cases of using the Appwrite API in your Ruby application. Rubocop is enforced and the configuration can be found at [.rubocop.yml](.rubocop.yml)
 
-## System Requirements 
-* A system with Ruby installed.
-* You have readily available AppWrite running instance (localhost in most cases).
-* Create a project in AppWrite instance using console.
-* Generate a secret key in the AppWrite instance using console.
+## System Requirements
+* A system with Python 3+ or Docker installed.
+* An Appwrite instance.
+* An Appwrite project created in the console.
+* An Appwrite API key created in the console.
 
 ### Installation
 1. Clone this repository.
-2. cd into to repository.
-3. Copy the `.env.example` file as `.env` in the root of the repository. (You can run `cp .env.example .env`)
-4. Copy the Project ID, Endpoint, API key from your Appwrite Console.
-4. Update APPWRITE_PROJECT_ID, APPWRITE_ENDPOINT, APPWRITE_API_KEY using the copied values from the console in the `.env` file as appropriate. 
-5. Install dependencies using bundle (`bundle install`)
-5. Execute the command `ruby lib/playground.rb`
+2. `cd` into to the repository.
+3. Open the playground.py file found in the root of the cloned repository.
+4. Copy Project ID, endpoint and API key from Appwrite console into `lib/playground.rb`
+5. Run the playground:
+    Ruby:
+        - Install dependencies using pip `bundle install`
+        - Execute the command `bundle exec ruby lib/playground.rb`
+    Docker:
+        - Execute the command `docker compose up`
 6. You will see the JSON response in the console.
 
-### APIs Covered in Playground.
-* Create Collection
-* List Collection
-* Add Document
-* List Documents
-* Upload File
-* Create User
-* List User
+### API's Covered:
+
+- Databse
+    * Create Collection
+    * List Collections
+    * Add Document
+    * List Documents
+    * Delete Document
+    * Delete Collection
+
+- Storage
+    * Create Bucket
+    * List Buckets
+    * Upload File
+    * List Files
+    * Delete File
+    * Delete Bucket
+
+- Users
+    * Create User
+    * List Users
+    * Delete User
+
+- Functions
+    * Create Function
+    * List Functions
+    * Delete Function
 
 ## Contributing
 

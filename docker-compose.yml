@@ -1,9 +1,9 @@
 version: '3.9'
 
 services:
-  playground:
-    image: ruby:3.1
+  playground-for-ruby:
+    build: .
     volumes:
       - "./:/app"
     working_dir: /app
-    command: "ruby /app/lib/playground.rb"
+    command: "bundle exec ruby /app/lib/playground.rb"
