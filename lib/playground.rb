@@ -15,7 +15,7 @@ $client
   .set_endpoint(appwrite_endpoint) # Your API Endpoint
   .set_project(appwrite_project) # Your project ID
   .set_key(appwrite_api_key) # Your secret API key
-  .set_self_signed
+  .set_self_signed # only during development
 
 def create_user
   users = Appwrite::Users.new($client)
