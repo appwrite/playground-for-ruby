@@ -15,6 +15,7 @@ $client
   .set_endpoint(appwrite_endpoint) # Your API Endpoint
   .set_project(appwrite_project) # Your project ID
   .set_key(appwrite_api_key) # Your secret API key
+  .set_self_signed # only during development
 
 def create_user
   users = Appwrite::Users.new($client)
@@ -22,7 +23,7 @@ def create_user
 
   user = users.create(
     user_id: "unique()",
-    email: "email@example.com",
+    email: "email#{Time.now.to_i}@example.com",
     password: "password",
     name: "Some User"
   )
@@ -50,13 +51,33 @@ def delete_user
   puts JSON.pretty_generate(response)
 end
 
+def create_database
+  databases = Appwrite::Databases.new($client, database_id: "moviesDB_#{Time.now.to_i}")
+  puts "Running Create Database API".green
+
+  database = databases.create(name: "Movies")
+
+  $database_id = database.id
+
+  puts JSON.pretty_generate(database.to_map)
+end
+
+def delete_database
+  databases = Appwrite::Databases.new($client, database_id: $database_id)
+  puts "Running Delete Database API".green
+
+  response = databases.delete()
+
+  puts JSON.pretty_generate(response)
+end
+
 def create_collection
-  database = Appwrite::Database.new($client)
+  databases = Appwrite::Databases.new($client, database_id: $database_id)
   puts "Running Create Collection API".green
 
   responses = []
 
-  responses << database.create_collection(
+  responses << databases.create_collection(
     collection_id: "movies",
     name: "Movies", 
     permission: "document",
@@ -66,7 +87,7 @@ def create_collection
 
   $collection_id = responses[0].id
 
-  responses << database.create_string_attribute(
+  responses << databases.create_string_attribute(
     collection_id: $collection_id,
     key: "name",
     size: 255,
@@ -74,7 +95,7 @@ def create_collection
     default: "",
     array: false
   )
-  responses << database.create_integer_attribute(
+  responses << databases.create_integer_attribute(
     collection_id: $collection_id,
     key: "release_year",
     required: true,
@@ -82,7 +103,7 @@ def create_collection
     max: 9999,
     array: false
   )
-  responses << database.create_float_attribute(
+  responses << databases.create_float_attribute(
     collection_id: $collection_id,
     key: "rating",
     required: true,
@@ -90,20 +111,20 @@ def create_collection
     max: 99.99,
     array: false
   )
-  responses << database.create_boolean_attribute(
+  responses << databases.create_boolean_attribute(
     collection_id: $collection_id,
     key: "kids",
     required: true,
     array: false
   )
-  responses << database.create_email_attribute(
+  responses << databases.create_email_attribute(
     collection_id: $collection_id,
     key: 'email',
     required: false,
     default: ''
   )
   sleep(3)
-  responses << database.create_index(
+  responses << databases.create_index(
     collection_id: $collection_id,
     key: "name_kids_idx",
     type: "fulltext",
@@ -116,28 +137,28 @@ def create_collection
 end
 
 def list_collections
-  database = Appwrite::Database.new($client)
+  databases = Appwrite::Databases.new($client, database_id: $database_id)
   puts "Running List Collection API".green
 
-  collections = database.list_collections
+  collections = databases.list_collections
 
   puts JSON.pretty_generate(collections.to_map)
 end
 
 def delete_collection
-  database = Appwrite::Database.new($client)
+  databases = Appwrite::Databases.new($client, database_id: $database_id)
   puts "Running Delete Collection API".green
 
-  response = database.delete_collection(collection_id: $collection_id)
+  response = databases.delete_collection(collection_id: $collection_id)
 
   puts JSON.pretty_generate(response)
 end
 
 def create_document
-  database = Appwrite::Database.new($client)
+  databases = Appwrite::Databases.new($client, database_id: $database_id)
   puts "Running Create Document API".green
 
-  document = database.create_document(
+  document = databases.create_document(
     collection_id: $collection_id,
     document_id: "unique()",
     data: {
@@ -153,19 +174,19 @@ def create_document
 end
 
 def list_documents
-  database = Appwrite::Database.new($client)
+  databases = Appwrite::Databases.new($client, database_id: $database_id)
   puts "Running List Document API".green
 
-  documents = database.list_documents(collection_id: $collection_id)
+  documents = databases.list_documents(collection_id: $collection_id)
 
   puts JSON.pretty_generate(documents.to_map)
 end
 
 def delete_document
-  database = Appwrite::Database.new($client)
+  databases = Appwrite::Databases.new($client, database_id: $database_id)
   puts "Running Delete Document API".green
 
-  response = database.delete_document(
+  response = databases.delete_document(
     collection_id: $collection_id, 
     document_id: $document_id
   )
@@ -203,7 +224,7 @@ def upload_file
   file = storage.create_file(
     bucket_id: $bucket_id,
     file_id: "unique()",
-    file: "./resources/nature.jpg"
+    file: Appwrite::InputFile.from_path("./resources/nature.jpg")
   )
 
   $file_id = file.id
@@ -281,12 +302,14 @@ list_users
 delete_user
 
 # Database
+create_database
 create_collection
 list_collections
 create_document
 list_documents
 delete_document
 delete_collection
+delete_database
 
 # Storage
 create_bucket
