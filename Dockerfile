@@ -1,5 +1,10 @@
-FROM ruby:3.1-alpine
+FROM ruby:3.1
+
 COPY Gemfile Gemfile
-RUN bundle install --no-deployment
-COPY . .
+
+RUN gem install bundler && bundle install
+
+COPY lib lib
+COPY resources resources
+
 CMD bundle exec ruby lib/playground.rb
