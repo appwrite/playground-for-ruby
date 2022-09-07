@@ -33,7 +33,7 @@ def create_user
   puts "Running Create User API".green
 
   user = $users.create(
-    user_id: "unique()",
+    user_id: ID.unique(),
     email: "email#{Time.now.to_i}@example.com",
     password: "password",
     name: "Some User"
@@ -64,7 +64,7 @@ def create_database
   puts "Running Create Database API".green
 
   database = $databases.create(
-      database_id: "unique()",
+      database_id: ID.unique(),
       name: "Movies"
   )
 
@@ -88,7 +88,7 @@ def create_collection
 
   responses << $databases.create_collection(
     database_id: $database_id,
-    collection_id: "unique()",
+    collection_id: ID.unique(),
     name: "Movies", 
     document_security: true,
     permissions: [
@@ -181,7 +181,7 @@ def create_document
   document = $databases.create_document(
     database_id: $database_id,
     collection_id: $collection_id,
-    document_id: "unique()",
+    document_id: ID.unique(),
     data: {
       name: "Spider Man",
       release_year: 1920,
@@ -227,7 +227,7 @@ def create_bucket
   puts "Running Create Bucket API".green
 
   bucket = $storage.create_bucket(
-    bucket_id: "unique()",
+    bucket_id: ID.unique(),
     name: "awesome-bucket",
     file_security: true,
     permissions: [
@@ -256,7 +256,7 @@ def upload_file
 
   file = $storage.create_file(
     bucket_id: $bucket_id,
-    file_id: "unique()",
+    file_id: ID.unique(),
     file: InputFile.from_path("./resources/nature.jpg"),
     permissions: [
         Permission.read(Role.any())
@@ -299,7 +299,7 @@ def create_function
   puts "Running Create Function API".green
 
   function = $functions.create(
-    function_id: "unique()",
+    function_id: ID.unique(),
     name: "Test Function",
     runtime: "python-3.9",
     execute: [Role.any()]
