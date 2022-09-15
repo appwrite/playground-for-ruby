@@ -7,9 +7,9 @@ require "colorize"
 
 include Appwrite
 
-appwrite_endpoint = ENV["APPWRITE_ENDPOINT"] || 'https://appwrite.jakebarnby.com/v1'
-appwrite_project = ENV["APPWRITE_PROJECT_ID"] || 'playground-for-android'
-appwrite_api_key = ENV["APPWRITE_API_KEY"] || 'fd180448df4adf4c36d1e6e8e2febb3c63b67cfa61cbe75ea1f91767e8c803298e812abf72246d5e54b2866d9e677fd59c1cfa3e47594ec8bf48b43b900ed31320a6d018b1d29661f06eef4ff8535e8b0904ca002120339f10962a37998f5d6853d2ff8d6e89b42f24aafa650534cf0e616652bb1ffdb19fe8df15b9406ac2d9'
+appwrite_endpoint = 'YOUR_ENDPOINT'
+appwrite_project = 'YOUR_PROJECT_ID'
+appwrite_api_key = 'YOUR_API_KEY'
 
 $client = Client.new
   .set_endpoint(appwrite_endpoint) # Your API Endpoint
