@@ -11,7 +11,7 @@ Appwrite playground is a simple way to explore the Appwrite API & Appwrite Ruby 
 This playground does not adhere to Ruby best practices but rather is intended to show some of the most simple examples and use cases of using the Appwrite API in your Ruby application. Rubocop is enforced and the configuration can be found at [.rubocop.yml](.rubocop.yml)
 
 ## System Requirements
-* A system with Python 3+ or Docker installed.
+* A system with Ruby 2.7+ or Docker installed.
 * An Appwrite instance.
 * An Appwrite project created in the console.
 * An Appwrite API key created in the console.
@@ -19,7 +19,7 @@ This playground does not adhere to Ruby best practices but rather is intended to
 ### Installation
 1. Clone this repository.
 2. `cd` into to the repository.
-3. Open the playground.py file found in the root of the cloned repository.
+3. Open the `lib/playground.rb` file found in the root of the cloned repository.
 4. Copy Project ID, endpoint and API key from Appwrite console into `lib/playground.rb`
 5. Run the playground:
     Ruby:
