@@ -7,9 +7,9 @@ require "colorize"
 
 include Appwrite
 
-appwrite_endpoint = 'YOUR_ENDPOINT'
-appwrite_project = 'YOUR_PROJECT_ID'
-appwrite_api_key = 'YOUR_API_KEY'
+appwrite_endpoint = 'https://v16.appwrite.org/v1'
+appwrite_project = '66c466f6001a3c3e06ae'
+appwrite_api_key = 'standard_2735ef3caa21929bc6940bdafe29ab9da0be16572a198be646998b7322c9422adaff18d519fc840d7e67f2d74b0dd1c0474aaa3e8521b62b0c11aca6aeee702f4a0aa4360a503df6b989c948ba678c5f236747602d4d673eda3775c3684da07fb5058b13414c9998f2aaf35c4448ee09f4dceb54f5f22694290b37d5b1796f9e'
 
 $client = Client.new
   .set_endpoint(appwrite_endpoint) # Your API Endpoint
@@ -107,7 +107,6 @@ def create_collection
     key: "name",
     size: 255,
     required: true,
-    default: "",
     array: false
   )
   responses << $databases.create_integer_attribute(
@@ -140,7 +139,6 @@ def create_collection
     collection_id: $collection_id,
     key: 'email',
     required: false,
-    default: ''
   )
   sleep(3)
   responses << $databases.create_index(
