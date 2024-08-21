@@ -6,7 +6,7 @@ group :development, :test do
     gem "rubocop"
 end
 
-gem "appwrite", "~> 7.1"
+gem "appwrite", git: "https://github.com/appwrite/sdk-for-ruby.git", tag: '12.0.0-rc.1'
 gem "colorize"
 gem "dotenv"
 gem "mime-types"

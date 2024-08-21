@@ -316,10 +316,92 @@ def list_functions
   puts JSON.pretty_generate(functions.to_map)
 end
 
+def get_function
+  puts "Running Get Function API".green
+
+  function = $functions.get(function_id: $function_id)
+
+  puts JSON.pretty_generate(function.to_map)
+end
+
 def delete_function
   puts "Running Delete Function API".green
 
   response = $functions.delete(function_id: $function_id)
+
+  puts JSON.pretty_generate(response)
+end
+
+def create_deployment
+  puts "Running Upload Deployment API"
+
+  deployment = $functions.create_deployment(
+    function_id: $function_id,
+    code: InputFile.from_path("./resources/index.rb"),
+    activate: true,
+    entrypoint: "index.rb"
+  )
+  $deployment_id = deployment.id
+
+  puts JSON.pretty_generate(deployment.to_map)
+
+  puts 'Waiting a little to ensure deployment has built ...'
+  sleep(5)
+end
+
+def list_deployments
+  puts "Running List Deployments API"
+
+  deployments = $functions.list_deployments(function_id: $function_id)
+
+  puts JSON.pretty_generate(deployments.to_map)
+end
+
+def delete_deployments
+  puts "Running Delete Deployment API"
+
+  response = $functions.delete_deployment(
+    function_id: $function_id,
+    deployment_id: $deployment_id
+  )
+
+  puts JSON.pretty_generate(response)
+end
+
+def create_execution
+  puts "Running Create Execution API"
+
+  execution = $functions.create_execution(function_id: $function_id)
+
+  puts JSON.pretty_generate(execution.to_map)
+end
+
+def list_executions
+  puts "Running List Executions API"
+
+  executions = $functions.list_executions(function_id: $function_id)
+
+  puts JSON.pretty_generate(executions.to_map)
+end
+
+def get_execution
+  puts "Running Get Execution API"
+
+  execution = $functions.get_execution(
+    function_id: $function_id,
+    execution_id: $execution_id
+  )
+
+  puts JSON.pretty_generate(execution.to_map)
+end
+
+def delete_execution
+  puts "Running Delete Execution API"
+
+  response = $functions.delete_execution(
+    function_id: $function_id,
+    execution_id: $execution_id
+  )
 
   puts JSON.pretty_generate(response)
 end
@@ -350,6 +432,14 @@ delete_bucket
 # Functions
 create_function
 list_functions
+get_function
+create_deployment
+list_deployments
+create_execution
+list_executions
+get_execution
 delete_function
+delete_execution
+delete_deployments
 
 puts "Successfully Ran playground!".bold.green
