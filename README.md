@@ -23,7 +23,7 @@ This playground does not adhere to Ruby best practices but rather is intended to
 4. Copy Project ID, endpoint and API key from Appwrite console into `lib/playground.rb`
 5. Run the playground:
     Ruby:
-        - Install dependencies using pip `bundle install`
+        - Install dependencies using bundle `bundle install`
         - Execute the command `bundle exec ruby lib/playground.rb`
     Docker:
         - Execute the command `docker compose up`
