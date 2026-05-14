@@ -3,10 +3,10 @@
 source "https://rubygems.org"
 
 group :development, :test do
-    gem "rubocop"
+  gem "rubocop"
 end
 
-gem "appwrite", "~> 7.1"
+gem "appwrite"
 gem "colorize"
 gem "dotenv"
 gem "mime-types"

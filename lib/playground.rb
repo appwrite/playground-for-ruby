@@ -7,8 +7,8 @@ require "colorize"
 
 include Appwrite
 
-appwrite_endpoint = 'YOUR_ENDPOINT'
-appwrite_project = 'YOUR_PROJECT_ID'
+appwrite_endpoint = 'http://localhost/v1'
+appwrite_project = 'test'
 appwrite_api_key = 'YOUR_API_KEY'
 
 $client = Client.new
